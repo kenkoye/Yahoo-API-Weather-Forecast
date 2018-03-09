@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Live Weather Forecast</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/Users/Kenneth/Desktop/weatherApp/wStyle.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://query.yahooapis.com/v1/public/yql?q=select wind from weather.forecast where woeid in (select woeid from geo.places(1) where text='chicago, il')&format=json&callback=callbackFunction"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+
+
+</head>
+<body>
+
+<div class="Header">
+	<h1>Geographic Weather Forecast</h1>
+</div>
+
+
+<div class="Container">
+<form id="Search_City" role="Search">
+  <input id="city" class="form-control" type="text" name="city" placeholder="Enter City" required>
+</form>
+<button class="button" type="submit" id="submitWeather" onclick="getWeather()">Search City</button>
+</div>
+
+<div class="Result">
+	<p>Enter a city, to view live weather forecast.</p>
+</div>
+
+<script>
+  
+function getWeather() {
+    var location = $('#city').val();
+
+    $.get('https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="' + location + '")&format=json', function (data) {
+        /* Check that a place was found (we'll just grab the first) */
+        if (data.query.results === null) {
+            alert("Location not found: " + location + "!");
+
+        } else {
+            $('.Result').html('<h2>' + data.query.results.channel.item.title + '</h2>' +
+                data.query.results.channel.item.description)
+            $('.Result').show();
+        }
+
+    });
+}
+</script>
+
+<div id="output">
+	<p></p>
+</div>
+
+<script>var queryURL = "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%202487889&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys/";
+
+$.getJSON(queryURL, function (data) {
+  
+  var results = data.query.results
+  var firstResult = results.channel.item.condition
+  console.log(firstResult);
+  
+  var location = 'Unknown' // not returned in response
+  var temp = firstResult.temp
+  var text = firstResult.text
+  
+$('#output').append($('<img>', { 
+    src : "/Users/Kenneth/Desktop/weatherApp/atmosphere copy.jpg", 
+    width : 16, 
+    height : 16, 
+    alt : "Test Image", 
+    title : "Test Image"
+}));
+</script>
+
+
+
+</body>
+</html>
