@@ -1,0 +1,77 @@
+body{
+	background-color: ;
+}
+
+form { 
+margin: 0 auto; 
+width:250px;
+}
+
+.Header{
+	color: white;
+	background-color: #000000;
+    border-radius: 7px 30px;
+    padding: 20px;
+    text-align: center;
+    font-style: bold;
+    font-family: Optima, sans-serif;
+}
+.Container{
+	padding: 20px;
+	margin: auto;
+    text-align: center;
+}
+
+.button {
+    top: 50%;
+}
+
+.Result{
+	padding: 20px;
+	margin: auto;
+    padding: 20px;
+    text-align: center;
+    font-family: Andale Mono, monospace;
+
+}
+input[type=text]:focus {
+    width: 100%;
+}
+input[type=text] {
+    width: 300px;
+    box-sizing: border-box;
+    border: 2px solid #000000;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    /*background-image: url('searchicon.png');*/
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+#submitWeather {
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+	background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+    border-radius: 12px;
+}
+
+
+#submitWeather:hover {
+    background-color: #008CBA;
+    color: white;
+    -webkit-transform: scale(1.05);
+}
